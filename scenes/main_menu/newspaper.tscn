@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuw62pk6yvfi1"]
+
+[ext_resource type="Script" path="res://scripts/ui/newspaper.gd" id="1_u4bmj"]
+[ext_resource type="Texture2D" uid="uid://cdbifpy88v42n" path="res://assets/ui/newspaper.png" id="1_va7mv"]
+
+[sub_resource type="Animation" id="Animation_6repw"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7rmo"]
+_data = {
+"fade_out": SubResource("Animation_6repw")
+}
+
+[node name="Newspaper" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4bmj")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Paper" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_va7mv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r7rmo")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_fade_finished"]

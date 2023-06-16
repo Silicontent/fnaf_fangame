@@ -1,0 +1,334 @@
+[gd_scene load_steps=31 format=3 uid="uid://ddhhgaccnsf1b"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu/menu.gd" id="1_42bun"]
+[ext_resource type="Texture2D" uid="uid://3hqqhjohrgp2" path="res://assets/ui/menu_plush.png" id="1_eibmr"]
+[ext_resource type="Texture2D" uid="uid://d3q4jq81dpn0j" path="res://assets/ui/static/frame_0_delay-0.01s.png" id="2_33o1h"]
+[ext_resource type="AudioStream" uid="uid://ba1wpawekxftb" path="res://assets/audio/menus/blip.wav" id="2_bsqeu"]
+[ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="2_ymd08"]
+[ext_resource type="Texture2D" uid="uid://bggm4rbw0f41t" path="res://assets/ui/menu_buttons/new_game_normal.png" id="3_hqlu7"]
+[ext_resource type="Texture2D" uid="uid://2xf3wnt65ldf" path="res://assets/ui/static/frame_1_delay-0.01s.png" id="3_hyl4d"]
+[ext_resource type="Texture2D" uid="uid://d4i68snaovyom" path="res://assets/ui/menu_buttons/new_game_selected.png" id="4_83oxf"]
+[ext_resource type="Texture2D" uid="uid://loa0f1k1luiw" path="res://assets/ui/static/frame_2_delay-0.01s.png" id="4_ftna4"]
+[ext_resource type="Texture2D" uid="uid://c1l3q8alfbbu3" path="res://assets/ui/menu_buttons/continue_normal.png" id="5_au8ov"]
+[ext_resource type="BitMap" uid="uid://dat8pmo33yowu" path="res://assets/ui/menu_buttons/click_mask.png" id="5_dtl8j"]
+[ext_resource type="Texture2D" uid="uid://cyb05vxlgiumt" path="res://assets/ui/static/frame_3_delay-0.01s.png" id="5_k1gmc"]
+[ext_resource type="Texture2D" uid="uid://22iii0cn0a1o" path="res://assets/ui/static/frame_4_delay-0.01s.png" id="6_mu0vk"]
+[ext_resource type="Texture2D" uid="uid://beg0lv7pm5asa" path="res://assets/ui/menu_buttons/continue_selected.png" id="6_xa5hb"]
+[ext_resource type="Texture2D" uid="uid://c3gjrnj6757k3" path="res://assets/ui/static/frame_5_delay-0.01s.png" id="7_1f1p0"]
+[ext_resource type="Texture2D" uid="uid://d4is2e8b4feh2" path="res://assets/ui/menu_buttons/extras_normal.png" id="7_hckfk"]
+[ext_resource type="Texture2D" uid="uid://3ccpgjguja11" path="res://assets/ui/static/frame_6_delay-0.01s.png" id="8_hmtm1"]
+[ext_resource type="Texture2D" uid="uid://bgtyu8w1j1ene" path="res://assets/ui/menu_buttons/extras_selected.png" id="8_qw1e7"]
+[ext_resource type="Texture2D" uid="uid://clapp8uk33yun" path="res://assets/ui/static/frame_7_delay-0.01s.png" id="9_sjbw6"]
+[ext_resource type="Texture2D" uid="uid://bul7dk6ooi7iv" path="res://assets/ui/star.png" id="11_4di4t"]
+[ext_resource type="Texture2D" uid="uid://cdbifpy88v42n" path="res://assets/ui/newspaper.png" id="20_ot7op"]
+
+[sub_resource type="Gradient" id="Gradient_prbq5"]
+colors = PackedColorArray(0.0470588, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wl6ed"]
+gradient = SubResource("Gradient_prbq5")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_liwje"]
+font = ExtResource("2_ymd08")
+font_size = 69
+
+[sub_resource type="LabelSettings" id="LabelSettings_rx57w"]
+font = ExtResource("2_ymd08")
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_h151v"]
+font = ExtResource("2_ymd08")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ga0hi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33o1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hyl4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ftna4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k1gmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mu0vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1f1p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hmtm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sjbw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_4twko"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_makdw"]
+resource_name = "paper_fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d7pvt"]
+_data = {
+"fade_in": SubResource("Animation_4twko"),
+"paper_fade_in": SubResource("Animation_makdw")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_42bun")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="OptionHover" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_bsqeu")
+volume_db = -4.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wl6ed")
+
+[node name="Plush" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 26.0
+offset_right = 1333.0
+offset_bottom = 685.0
+texture = ExtResource("1_eibmr")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Five
+Nights
+at
+Fredbear's"
+label_settings = SubResource("LabelSettings_liwje")
+
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 38
+
+[node name="Buttons" type="MarginContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="NewGameButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("3_hqlu7")
+texture_pressed = ExtResource("4_83oxf")
+texture_hover = ExtResource("4_83oxf")
+texture_click_mask = ExtResource("5_dtl8j")
+
+[node name="ContinueButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("5_au8ov")
+texture_pressed = ExtResource("6_xa5hb")
+texture_hover = ExtResource("6_xa5hb")
+texture_click_mask = ExtResource("5_dtl8j")
+
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ContinueButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -226.0
+offset_top = -9.0
+offset_bottom = 19.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "(1)"
+label_settings = SubResource("LabelSettings_rx57w")
+
+[node name="ExtrasButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_hckfk")
+texture_pressed = ExtResource("8_qw1e7")
+texture_hover = ExtResource("8_qw1e7")
+texture_click_mask = ExtResource("5_dtl8j")
+
+[node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 53
+
+[node name="Version" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "by Silicontent
+v0.0.1"
+label_settings = SubResource("LabelSettings_h151v")
+
+[node name="Stars" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 349.0
+offset_top = 26.0
+offset_right = 450.0
+offset_bottom = 339.0
+
+[node name="Star1" type="TextureRect" parent="Stars"]
+layout_mode = 2
+offset_right = 101.0
+offset_bottom = 101.0
+size_flags_vertical = 3
+texture = ExtResource("11_4di4t")
+
+[node name="Star2" type="TextureRect" parent="Stars"]
+layout_mode = 2
+offset_top = 105.0
+offset_right = 101.0
+offset_bottom = 207.0
+size_flags_vertical = 3
+texture = ExtResource("11_4di4t")
+
+[node name="Star3" type="TextureRect" parent="Stars"]
+layout_mode = 2
+offset_top = 211.0
+offset_right = 101.0
+offset_bottom = 313.0
+size_flags_vertical = 3
+texture = ExtResource("11_4di4t")
+
+[node name="Static" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static"]
+sprite_frames = SubResource("SpriteFrames_ga0hi")
+frame_progress = 0.0815903
+centered = false
+
+[node name="PaperOverlay" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 0
+texture = ExtResource("20_ot7op")
+
+[node name="Fade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PaperOverlay")
+libraries = {
+"": SubResource("AnimationLibrary_d7pvt")
+}
+
+[connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/NewGameButton" to="." method="_on_option_button_entered"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ContinueButton" to="." method="_on_option_button_entered"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ExtrasButton" to="." method="_on_option_button_entered"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ExtrasButton" to="." method="_on_extras_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_paper_anim_finished"]

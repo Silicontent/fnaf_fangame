@@ -1,0 +1,6 @@
+res://scenes/main_menu/main_menu.tscn
+res://scenes/main_menu/night_transition.tscn
+res://scenes/gameplay/game.tscn
+res://scenes/audio_master.tscn
+res://scripts/ui/main_menu/menu.gd
+res://scripts/globals.gd

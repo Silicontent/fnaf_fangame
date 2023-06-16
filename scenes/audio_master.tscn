@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqninexs21txg"]
+
+[ext_resource type="Script" path="res://scripts/audio_master.gd" id="1_2p2nd"]
+
+[node name="AudioMaster" type="Node"]
+script = ExtResource("1_2p2nd")
+
+[node name="Music1" type="AudioStreamPlayer" parent="."]
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+
+[node name="Music3" type="AudioStreamPlayer" parent="."]
