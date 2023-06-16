@@ -2,5 +2,13 @@ res://scenes/main_menu/main_menu.tscn
 res://scenes/main_menu/night_transition.tscn
 res://scenes/gameplay/game.tscn
 res://scenes/audio_master.tscn
+res://scenes/main_menu/warning.tscn
+res://scripts/ui/main_menu/warning.gd
 res://scripts/ui/main_menu/menu.gd
-res://scripts/globals.gd
+res://assets/scenes/main_menu/newspaper.tscn
+res://assets/scenes/main_menu/main_menu.tscn
+res://assets/scenes/main_menu/night_transition.tscn
+res://assets/scenes/gameplay/game.tscn
+res://assets/scenes/audio_master.tscn
+res://scenes/main_menu/newspaper.tscn
+res://scripts/gameplay/game_manager.gd

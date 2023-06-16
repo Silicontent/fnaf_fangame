@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuw62pk6yvfi1"]
+[gd_scene load_steps=7 format=3 uid="uid://cuw62pk6yvfi1"]
 
 [ext_resource type="Script" path="res://scripts/ui/newspaper.gd" id="1_u4bmj"]
 [ext_resource type="Texture2D" uid="uid://cdbifpy88v42n" path="res://assets/ui/newspaper.png" id="1_va7mv"]
+[ext_resource type="FontFile" uid="uid://beiky4b2vaee0" path="res://assets/ui/font_tnr/italic.ttf" id="3_jhn7j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rc5dp"]
+font = ExtResource("3_jhn7j")
+font_size = 29
 
 [sub_resource type="Animation" id="Animation_6repw"]
 resource_name = "fade_out"
@@ -50,6 +55,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_va7mv")
+
+[node name="Notice" type="Label" parent="Paper"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -56.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Click to continue..."
+label_settings = SubResource("LabelSettings_rc5dp")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

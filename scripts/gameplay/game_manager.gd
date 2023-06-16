@@ -1,5 +1,7 @@
 extends Node2D
 
+var cam_state = false
+
 
 func _ready() -> void:
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ddhhgaccnsf1b"]
+[gd_scene load_steps=32 format=3 uid="uid://ddhhgaccnsf1b"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu/menu.gd" id="1_42bun"]
 [ext_resource type="Texture2D" uid="uid://3hqqhjohrgp2" path="res://assets/ui/menu_plush.png" id="1_eibmr"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bgtyu8w1j1ene" path="res://assets/ui/menu_buttons/extras_selected.png" id="8_qw1e7"]
 [ext_resource type="Texture2D" uid="uid://clapp8uk33yun" path="res://assets/ui/static/frame_7_delay-0.01s.png" id="9_sjbw6"]
 [ext_resource type="Texture2D" uid="uid://bul7dk6ooi7iv" path="res://assets/ui/star.png" id="11_4di4t"]
+[ext_resource type="Texture2D" uid="uid://cubwch6ilypk4" path="res://assets/ui/menu_buttons/extras_locked.png" id="12_0os3g"]
 [ext_resource type="Texture2D" uid="uid://cdbifpy88v42n" path="res://assets/ui/newspaper.png" id="20_ot7op"]
 
 [sub_resource type="Gradient" id="Gradient_prbq5"]
@@ -243,6 +244,7 @@ layout_mode = 2
 texture_normal = ExtResource("7_hckfk")
 texture_pressed = ExtResource("8_qw1e7")
 texture_hover = ExtResource("8_qw1e7")
+texture_disabled = ExtResource("12_0os3g")
 texture_click_mask = ExtResource("5_dtl8j")
 
 [node name="HSeparator2" type="HSeparator" parent="UI/MarginContainer/VBoxContainer"]
@@ -310,7 +312,6 @@ mouse_filter = 0
 texture = ExtResource("20_ot7op")
 
 [node name="Fade" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

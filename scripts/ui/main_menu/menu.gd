@@ -1,13 +1,15 @@
 extends Control
 
 @onready var static_overlay = $Static/AnimatedSprite2D
-@onready var star1 = $Stars/Star1
-@onready var star2 = $Stars/Star2
-@onready var star3 = $Stars/Star3
-@onready var continue_display = $UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ContinueButton/Label
 @onready var anim_player = $AnimationPlayer
 @onready var paper = $PaperOverlay
 
+@onready var star1 = $Stars/Star1
+@onready var star2 = $Stars/Star2
+@onready var star3 = $Stars/Star3
+
+@onready var extras_btn = $UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ExtrasButton
+@onready var continue_display = $UI/MarginContainer/VBoxContainer/Buttons/VBoxContainer/ContinueButton/Label
 @onready var aud_hover = $Audio/OptionHover
 
 var save_path = "user://save/"
@@ -43,6 +45,8 @@ func check_progress() -> void:
 		save_res.beat_six = true
 	if Globals.impossible:
 		save_res.beat_impossible = true
+	
+	extras_btn.disabled = not(save_res.beat_six)
 	
 	if Globals.current_night > save_res.night:
 		save_res.set_progress(Globals.current_night)

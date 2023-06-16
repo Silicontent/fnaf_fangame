@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5k72dl54incq"]
+[gd_scene load_steps=9 format=3 uid="uid://b5k72dl54incq"]
 
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="1_cstc0"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/warning.gd" id="1_ocel8"]
@@ -13,8 +13,7 @@ font = ExtResource("2_hdg7s")
 font_size = 44
 
 [sub_resource type="Animation" id="Animation_8st3r"]
-resource_name = "warning_fade"
-length = 2.8
+resource_name = "warning_fade_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,15 +21,32 @@ tracks/0/path = NodePath("WarningContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 2, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_irjhf"]
+resource_name = "warning_fade_out"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WarningContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jhus7"]
 _data = {
-"warning_fade": SubResource("Animation_8st3r")
+"warning_fade_in": SubResource("Animation_8st3r"),
+"warning_fade_out": SubResource("Animation_irjhf")
 }
 
 [node name="Warning" type="Control"]
@@ -52,7 +68,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="WarningContainer" type="MarginContainer" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
