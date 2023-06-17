@@ -24,9 +24,14 @@ var current_path: Array
 
 
 func _ready() -> void:
+	# without this, the owner "Animatronics" won't have a reference to this character
+	# ready before the animatronic emits the moved signal
+	await owner.ready
+	
 	randomize()
 	move_timer.wait_time = wait_duration
 	reset_to_beginning()
+	emit_signal("moved", current_location)
 
 
 # used to completely disable or enable animatronic
@@ -41,12 +46,10 @@ func toggle_animatronic(state: bool) -> void:
 func reset_to_beginning() -> void:
 	var rand = randi() % path_amts + 1
 	current_path = places[rand]
-	print(current_path)
+	print(animatronic + " chosen path: " + str(current_path))
 	
 	current_progress = 0
 	current_location = current_path[0]
-	print(current_location)
-#	emit_signal("moved", current_location)
 
 
 func progress_to_location() -> void:

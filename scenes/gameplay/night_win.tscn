@@ -1,0 +1,188 @@
+[gd_scene load_steps=10 format=3 uid="uid://xgxj05m37u0t"]
+
+[ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="1_1htf3"]
+[ext_resource type="Script" path="res://scripts/ui/night_win.gd" id="1_aansi"]
+[ext_resource type="AudioStream" uid="uid://cjfxcl6luydo0" path="res://assets/audio/menus/night_chime.wav" id="3_54kkg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6hgr"]
+font = ExtResource("1_1htf3")
+font_size = 117
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0srn"]
+font = ExtResource("1_1htf3")
+font_size = 117
+
+[sub_resource type="Animation" id="Animation_rvrqk"]
+resource_name = "5_to_6"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Number:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(484, 294), Vector2(484, 162)]
+}
+
+[sub_resource type="Animation" id="Animation_pbk8r"]
+resource_name = "fade_in"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_a76ts"]
+resource_name = "fade_out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjhja"]
+_data = {
+"5_to_6": SubResource("Animation_rvrqk"),
+"fade_in": SubResource("Animation_pbk8r"),
+"fade_out": SubResource("Animation_a76ts")
+}
+
+[node name="NightWin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aansi")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AM" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -67.0
+offset_right = 147.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "   AM"
+label_settings = SubResource("LabelSettings_x6hgr")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -66.0
+offset_right = -36.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5
+6"
+label_settings = SubResource("LabelSettings_v0srn")
+horizontal_alignment = 1
+
+[node name="TopBuffer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -422.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBuffer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -298.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yjhja")
+}
+
+[node name="Chime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_54kkg")
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,13 +1,179 @@
-[gd_scene load_steps=3 format=3 uid="uid://15q0uplf2vkv"]
+[gd_scene load_steps=21 format=3 uid="uid://15q0uplf2vkv"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/game_manager.gd" id="1_t5o5h"]
+[ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="2_0nbq3"]
 [ext_resource type="PackedScene" uid="uid://ca3ixmg3sq0gj" path="res://scenes/gameplay/camera.tscn" id="2_c651e"]
+[ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="3_nbd3e"]
+[ext_resource type="Texture2D" uid="uid://i8kw4xq1scqj" path="res://assets/camera/ui/cam_flip.png" id="4_5ke45"]
+[ext_resource type="Texture2D" uid="uid://e1yppahckogu" path="res://assets/camera/char_on_cams/placeholder.png" id="4_eudnt"]
+[ext_resource type="Texture2D" uid="uid://dbqasbbeecc0n" path="res://assets/camera/monitor/monitor_01.png" id="5_ywoch"]
+[ext_resource type="Texture2D" uid="uid://dcdo12ammtf41" path="res://assets/camera/monitor/monitor_02.png" id="6_c4ch0"]
+[ext_resource type="Texture2D" uid="uid://cl0nrkcwdhdcl" path="res://assets/camera/monitor/monitor_03.png" id="7_7jj5a"]
+[ext_resource type="Texture2D" uid="uid://dyfvgkcs2hkv1" path="res://assets/camera/monitor/monitor_04.png" id="8_40ssq"]
+[ext_resource type="Texture2D" uid="uid://bqejvwi0dhob2" path="res://assets/camera/monitor/monitor_05.png" id="9_wliwx"]
+[ext_resource type="Texture2D" uid="uid://cjph7gaw5k67r" path="res://assets/camera/monitor/monitor_06.png" id="10_iyo16"]
+[ext_resource type="Texture2D" uid="uid://onq21c4q5h3j" path="res://assets/camera/monitor/monitor_07.png" id="11_nvj2p"]
+[ext_resource type="Texture2D" uid="uid://ces4jpxdse02n" path="res://assets/camera/monitor/monitor_08.png" id="12_lx5cs"]
+[ext_resource type="Texture2D" uid="uid://cv08kyha7iy4e" path="res://assets/camera/monitor/monitor_09.png" id="13_shxkn"]
+[ext_resource type="Texture2D" uid="uid://tiblo2gcipte" path="res://assets/camera/monitor/monitor_10.png" id="14_e8qmm"]
+[ext_resource type="Texture2D" uid="uid://cn6kg77acy0hw" path="res://assets/camera/monitor/monitor_11.png" id="15_5r3kn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgi6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_5r3kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e8qmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_shxkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lx5cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nvj2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iyo16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wliwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_40ssq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7jj5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c4ch0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ywoch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eudnt")
+}],
+"loop": false,
+"name": &"flip_down",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eudnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ywoch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c4ch0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7jj5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_40ssq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wliwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iyo16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nvj2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lx5cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_shxkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e8qmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5r3kn")
+}],
+"loop": false,
+"name": &"flip_up",
+"speed": 40.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyrrv"]
+font = ExtResource("2_0nbq3")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeqtw"]
+font = ExtResource("3_nbd3e")
+font_size = 26
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_t5o5h")
 
+[node name="MonitorAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cgi6b")
+animation = &"flip_down"
+centered = false
+
+[node name="Mechanics" type="Node" parent="."]
+
+[node name="HourTimer" type="Timer" parent="Mechanics"]
+wait_time = 70.0
+one_shot = true
+autostart = true
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Camera" parent="." instance=ExtResource("2_c651e")]
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="Camera" parent="HUD" instance=ExtResource("2_c651e")]
+
+[node name="Times" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1041.0
+offset_bottom = -597.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hour" type="Label" parent="HUD/Times"]
+layout_mode = 2
+offset_left = -5.0
+offset_top = 15.0
+offset_right = 217.0
+offset_bottom = 69.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "12 AM"
+label_settings = SubResource("LabelSettings_cyrrv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Night" type="Label" parent="HUD/Times"]
+layout_mode = 0
+offset_left = -69.0
+offset_top = 61.0
+offset_right = 217.0
+offset_bottom = 115.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Night 1"
+label_settings = SubResource("LabelSettings_jeqtw")
+horizontal_alignment = 2
+
+[node name="MonitorToggle" type="TextureButton" parent="HUD"]
+offset_left = 23.0
+offset_top = 643.0
+offset_right = 524.0
+offset_bottom = 697.0
+focus_mode = 0
+action_mode = 0
+texture_normal = ExtResource("4_5ke45")
+
+[connection signal="animation_finished" from="MonitorAnimation" to="." method="_on_monitor_animation_finished"]
+[connection signal="timeout" from="Mechanics/HourTimer" to="." method="_on_hour_timer_timeout"]
+[connection signal="pressed" from="HUD/MonitorToggle" to="." method="_on_monitor_toggle_pressed"]

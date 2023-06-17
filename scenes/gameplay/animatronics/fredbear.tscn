@@ -12,7 +12,7 @@ places = {
 2: [1, 2, 5, 6, 8, 12]
 }
 move_timer = NodePath("MoveTimer")
-wait_duration = 3.0
+wait_duration = 9.0
 path_amts = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

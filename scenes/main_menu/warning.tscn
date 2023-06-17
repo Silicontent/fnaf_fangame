@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5k72dl54incq"]
+[gd_scene load_steps=11 format=3 uid="uid://b5k72dl54incq"]
 
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="1_cstc0"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/warning.gd" id="1_ocel8"]
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="2_hdg7s"]
+[ext_resource type="FontFile" uid="uid://beiky4b2vaee0" path="res://assets/ui/font_tnr/italic.ttf" id="4_mwmd3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mjnf8"]
 font = ExtResource("1_cstc0")
@@ -11,6 +12,10 @@ font_size = 71
 [sub_resource type="LabelSettings" id="LabelSettings_yj76q"]
 font = ExtResource("2_hdg7s")
 font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0f4n"]
+font = ExtResource("4_mwmd3")
+font_size = 35
 
 [sub_resource type="Animation" id="Animation_8st3r"]
 resource_name = "warning_fade_in"
@@ -100,6 +105,14 @@ label_settings = SubResource("LabelSettings_yj76q")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="WarningContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+Click to continue..."
+label_settings = SubResource("LabelSettings_x0f4n")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
