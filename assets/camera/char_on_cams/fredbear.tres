@@ -1,8 +1,36 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://dcqu3hxv1mbsd"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dcqu3hxv1mbsd"]
+
+[ext_resource type="Texture2D" uid="uid://brrmbrxob1qan" path="res://assets/camera/char_on_cams/fredbear/cam_1.png" id="1_hsrup"]
+[ext_resource type="Texture2D" uid="uid://jnj4j7j4tmk6" path="res://assets/camera/char_on_cams/fredbear/cam_2.png" id="2_gvea2"]
+[ext_resource type="Texture2D" uid="uid://e1yppahckogu" path="res://assets/camera/char_on_cams/placeholder.png" id="3_2cx7a"]
+[ext_resource type="Texture2D" uid="uid://bwmpvjp8qyi38" path="res://assets/camera/char_on_cams/fredbear/cam_4.png" id="4_0el0x"]
+[ext_resource type="Texture2D" uid="uid://c04y18tddofob" path="res://assets/camera/char_on_cams/fredbear/cam_5.png" id="5_2gye7"]
+[ext_resource type="Texture2D" uid="uid://bw2f5xod7ycck" path="res://assets/camera/char_on_cams/fredbear/cam_6.png" id="6_n8c3t"]
 
 [resource]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hsrup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gvea2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2cx7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0el0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2gye7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n8c3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2cx7a")
+}],
 "loop": true,
 "name": &"positions",
 "speed": 5.0

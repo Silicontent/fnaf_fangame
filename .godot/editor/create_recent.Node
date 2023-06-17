@@ -1,7 +1,10 @@
-Sprite2D
-Node2D
-AnimatedSprite2D
 Control
+Node2D
+Marker2D
+AnimationPlayer
+Timer
+Sprite2D
+AnimatedSprite2D
 TextureRect
 TextureButton
 Label
@@ -9,8 +12,6 @@ CanvasLayer
 ColorRect
 AudioStreamPlayer
 Node
-Timer
-AnimationPlayer
 RichTextLabel
 Node3D
 Button

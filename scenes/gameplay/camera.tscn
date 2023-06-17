@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ca3ixmg3sq0gj"]
+[gd_scene load_steps=50 format=3 uid="uid://ca3ixmg3sq0gj"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/camera/camera.gd" id="1_5gv5x"]
 [ext_resource type="Texture2D" uid="uid://by5rrdb5d4rlm" path="res://assets/camera/ui/cam_buttons/cam_button_normal.png" id="1_7u7tr"]
@@ -32,6 +32,16 @@
 [ext_resource type="Texture2D" uid="uid://csnfdb4ypgt6" path="res://assets/camera/ui/cam_buttons/cam_6.png" id="15_hwi7i"]
 [ext_resource type="Texture2D" uid="uid://dumqhpyu8blox" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_10.png" id="16_h6gg6"]
 [ext_resource type="Texture2D" uid="uid://b4j0gjfb8qs0v" path="res://assets/camera/ui/cam_buttons/cam_7.png" id="16_mc5ew"]
+[ext_resource type="Texture2D" uid="uid://d3q4jq81dpn0j" path="res://assets/ui/static/frame_0_delay-0.01s.png" id="17_yqorb"]
+[ext_resource type="Texture2D" uid="uid://2xf3wnt65ldf" path="res://assets/ui/static/frame_1_delay-0.01s.png" id="18_jtxkm"]
+[ext_resource type="Texture2D" uid="uid://loa0f1k1luiw" path="res://assets/ui/static/frame_2_delay-0.01s.png" id="19_yh2ca"]
+[ext_resource type="Texture2D" uid="uid://cyb05vxlgiumt" path="res://assets/ui/static/frame_3_delay-0.01s.png" id="20_k1qvs"]
+[ext_resource type="Texture2D" uid="uid://22iii0cn0a1o" path="res://assets/ui/static/frame_4_delay-0.01s.png" id="21_tuamn"]
+[ext_resource type="Texture2D" uid="uid://c3gjrnj6757k3" path="res://assets/ui/static/frame_5_delay-0.01s.png" id="22_revlc"]
+[ext_resource type="Texture2D" uid="uid://3ccpgjguja11" path="res://assets/ui/static/frame_6_delay-0.01s.png" id="23_jfv46"]
+[ext_resource type="Texture2D" uid="uid://clapp8uk33yun" path="res://assets/ui/static/frame_7_delay-0.01s.png" id="24_vy7s3"]
+[ext_resource type="PackedScene" uid="uid://b6bgfs5udpjw6" path="res://scenes/gameplay/animatronics/fredbear.tscn" id="33_4tycx"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera/animatronic_manager.gd" id="33_yt6sh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yeqai"]
 animations = [{
@@ -70,6 +80,59 @@ animations = [{
 "name": &"default",
 "speed": 40.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmbm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_yqorb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jtxkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yh2ca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_k1qvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tuamn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_revlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jfv46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vy7s3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Animation" id="Animation_yox56"]
+resource_name = "static_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.12549)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2t16d"]
+_data = {
+"static_flash": SubResource("Animation_yox56")
+}
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_2e6mg"]
 frames = 2
@@ -139,6 +202,17 @@ sprite_frames = SubResource("SpriteFrames_yeqai")
 frame = 9
 frame_progress = 1.0
 centered = false
+
+[node name="Static" type="AnimatedSprite2D" parent="Overlay"]
+modulate = Color(1, 1, 1, 0.12549)
+sprite_frames = SubResource("SpriteFrames_rmbm2")
+frame_progress = 0.600374
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Overlay"]
+libraries = {
+"": SubResource("AnimationLibrary_2t16d")
+}
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 1
@@ -340,6 +414,19 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("16_mc5ew")
 
+[node name="Animatronics" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("33_yt6sh")
+
+[node name="Fredbear" parent="Animatronics" instance=ExtResource("33_4tycx")]
+position = Vector2(853, 588)
+
 [connection signal="cam_changed" from="CamButtons" to="." method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="View" method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="Overlay" method="_on_cam_buttons_cam_changed"]
@@ -350,3 +437,6 @@ texture = ExtResource("16_mc5ew")
 [connection signal="pressed" from="CamButtons/5" to="CamButtons" method="_on_cam5_pressed"]
 [connection signal="pressed" from="CamButtons/6" to="CamButtons" method="_on_cam6_pressed"]
 [connection signal="pressed" from="CamButtons/7" to="CamButtons" method="_on_cam7_pressed"]
+[connection signal="moved" from="Animatronics/Fredbear" to="View" method="_on_fredbear_moved"]
+[connection signal="moved" from="Animatronics/Fredbear" to="Overlay" method="_on_fredbear_moved"]
+[connection signal="moved" from="Animatronics/Fredbear" to="Animatronics" method="_on_fredbear_moved"]

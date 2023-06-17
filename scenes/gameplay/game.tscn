@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://15q0uplf2vkv"]
+[gd_scene load_steps=3 format=3 uid="uid://15q0uplf2vkv"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/game_manager.gd" id="1_t5o5h"]
+[ext_resource type="PackedScene" uid="uid://ca3ixmg3sq0gj" path="res://scenes/gameplay/camera.tscn" id="2_c651e"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_t5o5h")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Camera" parent="." instance=ExtResource("2_c651e")]
+offset_right = 1280.0
+offset_bottom = 720.0

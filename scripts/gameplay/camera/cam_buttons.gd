@@ -6,7 +6,7 @@ var current_cam: int = 1
 
 
 func _ready() -> void:
-	set_selected_cam(1)
+	change_cam(1)
 
 
 # sets the selected camera and its button while disabling the other buttons
@@ -21,36 +21,30 @@ func set_selected_cam(selected_cam: int) -> void:
 			cam.button_pressed = false
 
 
-func change_cam() -> void:
+func change_cam(num: int) -> void:
+	current_cam = num
 	set_selected_cam(current_cam)
 	emit_signal("cam_changed", current_cam)
 
 
 # CAM BUTTONS CLICKED SIGNALS --------------------------------------------
 func _on_cam1_pressed():
-	current_cam = 1
-	change_cam()
+	change_cam(1)
 
 func _on_cam2_pressed():
-	current_cam = 2
-	change_cam()
+	change_cam(2)
 
 func _on_cam3_pressed():
-	current_cam = 3
-	change_cam()
+	change_cam(3)
 
 func _on_cam4_pressed():
-	current_cam = 4
-	change_cam()
+	change_cam(4)
 
 func _on_cam5_pressed():
-	current_cam = 5
-	change_cam()
+	change_cam(5)
 
 func _on_cam6_pressed():
-	current_cam = 6
-	change_cam()
+	change_cam(6)
 
 func _on_cam7_pressed():
-	current_cam = 7
-	change_cam()
+	change_cam(7)

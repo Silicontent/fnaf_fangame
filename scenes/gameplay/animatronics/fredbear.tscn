@@ -1,5 +1,24 @@
-[gd_scene format=3 uid="uid://b6bgfs5udpjw6"]
+[gd_scene load_steps=3 format=3 uid="uid://b6bgfs5udpjw6"]
 
-[node name="Fredbear" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://c4tajri24n4q7" path="res://assets/camera/fredbear_pos.png" id="1_gvm1y"]
+[ext_resource type="Script" path="res://scripts/gameplay/animatronics/room_mover.gd" id="1_xo673"]
+
+[node name="Fredbear" type="Node2D" node_paths=PackedStringArray("move_timer")]
+script = ExtResource("1_xo673")
+animatronic = "Fredbear"
+ai = 10
+places = {
+1: [1, 2, 4, 11, 6, 8, 12],
+2: [1, 2, 5, 6, 8, 12]
+}
+move_timer = NodePath("MoveTimer")
+wait_duration = 3.0
+path_amts = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gvm1y")
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
