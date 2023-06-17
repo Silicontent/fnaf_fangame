@@ -1,0 +1,352 @@
+[gd_scene load_steps=37 format=3 uid="uid://ca3ixmg3sq0gj"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/camera/camera.gd" id="1_5gv5x"]
+[ext_resource type="Texture2D" uid="uid://by5rrdb5d4rlm" path="res://assets/camera/ui/cam_buttons/cam_button_normal.png" id="1_7u7tr"]
+[ext_resource type="Texture2D" uid="uid://cdm2tku5c5iq5" path="res://assets/camera/ui/border.png" id="1_rfqai"]
+[ext_resource type="Texture2D" uid="uid://cv2qtc76swoqc" path="res://assets/camera/ui/rec_1.png" id="2_5vhad"]
+[ext_resource type="Texture2D" uid="uid://bar7s87gynx8b" path="res://assets/camera/ui/cam_buttons/cam_button_selected_1.png" id="2_uytu7"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera/cam_view.gd" id="2_veudk"]
+[ext_resource type="Texture2D" uid="uid://csyj8h3uw6ffa" path="res://assets/camera/ui/rec_2.png" id="3_4ntxk"]
+[ext_resource type="Texture2D" uid="uid://dm1x61nee1ql5" path="res://assets/camera/ui/cam_buttons/cam_button_selected_2.png" id="3_l03t4"]
+[ext_resource type="Texture2D" uid="uid://bc3726mxuxav7" path="res://assets/camera/ui/map_1.png" id="4_ykoyy"]
+[ext_resource type="Texture2D" uid="uid://c8qvhu4qn5qka" path="res://assets/camera/ui/map_2.png" id="5_20esc"]
+[ext_resource type="SpriteFrames" uid="uid://cpvatof4m6qk4" path="res://assets/camera/backgrounds/cam_backgrounds.tres" id="6_j0a4x"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera/cam_overlay.gd" id="6_v0b5e"]
+[ext_resource type="Texture2D" uid="uid://b7pne5s8akobd" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_1.png" id="7_qd13y"]
+[ext_resource type="Texture2D" uid="uid://bqqkturvvh8d2" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_2.png" id="8_3nstl"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera/cam_buttons.gd" id="8_42x21"]
+[ext_resource type="SpriteFrames" uid="uid://dcqu3hxv1mbsd" path="res://assets/camera/char_on_cams/fredbear.tres" id="8_g5ugg"]
+[ext_resource type="Texture2D" uid="uid://d3dk6ctqktm5s" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_3.png" id="9_6t26t"]
+[ext_resource type="SpriteFrames" uid="uid://fbe2ethilkni" path="res://assets/camera/char_on_cams/sbonnie.tres" id="9_kaf46"]
+[ext_resource type="Texture2D" uid="uid://bodve13mm2r68" path="res://assets/camera/ui/cam_buttons/cam_1.png" id="10_0wgur"]
+[ext_resource type="Texture2D" uid="uid://bk0ilatqw01gy" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_4.png" id="10_d1fhe"]
+[ext_resource type="Texture2D" uid="uid://cf7jrmw70hc67" path="res://assets/camera/ui/cam_buttons/cam_2.png" id="11_ih522"]
+[ext_resource type="Texture2D" uid="uid://qkxgp8qmi500" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_5.png" id="11_w87cl"]
+[ext_resource type="Texture2D" uid="uid://bn231woxqecud" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_6.png" id="12_hfdmr"]
+[ext_resource type="Texture2D" uid="uid://dcx5osede58mg" path="res://assets/camera/ui/cam_buttons/cam_3.png" id="12_wshbt"]
+[ext_resource type="Texture2D" uid="uid://byn3bwjihg6jw" path="res://assets/camera/ui/cam_buttons/cam_4.png" id="13_08r1i"]
+[ext_resource type="Texture2D" uid="uid://b2wv5ci44iint" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_7.png" id="13_qiube"]
+[ext_resource type="Texture2D" uid="uid://ijwyk651vqed" path="res://assets/camera/ui/cam_buttons/cam_5.png" id="14_1rnhq"]
+[ext_resource type="Texture2D" uid="uid://mtbhjme6dou" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_8.png" id="14_arwia"]
+[ext_resource type="Texture2D" uid="uid://8hexp0thv705" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_9.png" id="15_2eoj5"]
+[ext_resource type="Texture2D" uid="uid://csnfdb4ypgt6" path="res://assets/camera/ui/cam_buttons/cam_6.png" id="15_hwi7i"]
+[ext_resource type="Texture2D" uid="uid://dumqhpyu8blox" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_10.png" id="16_h6gg6"]
+[ext_resource type="Texture2D" uid="uid://b4j0gjfb8qs0v" path="res://assets/camera/ui/cam_buttons/cam_7.png" id="16_mc5ew"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeqai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qd13y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3nstl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6t26t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d1fhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w87cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hfdmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qiube")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_arwia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2eoj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_h6gg6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 40.0
+}]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_2e6mg"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("2_5vhad")
+frame_1/texture = ExtResource("3_4ntxk")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_tpd43"]
+frames = 2
+frame_0/texture = ExtResource("4_ykoyy")
+frame_1/texture = ExtResource("5_20esc")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4vqgf"]
+frames = 2
+frame_0/texture = ExtResource("2_uytu7")
+frame_1/texture = ExtResource("3_l03t4")
+frame_1/duration = 1.0
+
+[node name="Camera" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5gv5x")
+
+[node name="View" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_veudk")
+
+[node name="MainScene" type="AnimatedSprite2D" parent="View"]
+sprite_frames = ExtResource("6_j0a4x")
+animation = &"cameras"
+centered = false
+
+[node name="Fredbear" type="AnimatedSprite2D" parent="View"]
+visible = false
+sprite_frames = ExtResource("8_g5ugg")
+animation = &"positions"
+centered = false
+
+[node name="SpringBonnie" type="AnimatedSprite2D" parent="View"]
+visible = false
+sprite_frames = ExtResource("9_kaf46")
+animation = &"positions"
+centered = false
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_v0b5e")
+
+[node name="SwitchCams" type="AnimatedSprite2D" parent="Overlay"]
+sprite_frames = SubResource("SpriteFrames_yeqai")
+frame = 9
+frame_progress = 1.0
+centered = false
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="TextureRect" parent="GUI"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rfqai")
+
+[node name="RecIcon" type="TextureRect" parent="GUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 150.0
+offset_bottom = 78.0
+texture = SubResource("AnimatedTexture_2e6mg")
+
+[node name="Map" type="TextureRect" parent="GUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 861.0
+offset_top = 403.0
+offset_right = 1224.0
+offset_bottom = 664.0
+texture = SubResource("AnimatedTexture_tpd43")
+
+[node name="CamButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_42x21")
+metadata/_edit_lock_ = true
+
+[node name="1" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 833.0
+offset_top = 563.0
+offset_right = 899.0
+offset_bottom = 611.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0wgur")
+
+[node name="2" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 884.0
+offset_top = 464.0
+offset_right = 950.0
+offset_bottom = 512.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_ih522")
+
+[node name="3" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 876.0
+offset_top = 380.0
+offset_right = 942.0
+offset_bottom = 428.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_wshbt")
+
+[node name="4" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 998.0
+offset_top = 380.0
+offset_right = 1064.0
+offset_bottom = 428.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_08r1i")
+
+[node name="5" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1022.0
+offset_top = 617.0
+offset_right = 1088.0
+offset_bottom = 665.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_1rnhq")
+
+[node name="6" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1148.0
+offset_top = 377.0
+offset_right = 1214.0
+offset_bottom = 425.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_hwi7i")
+
+[node name="7" type="TextureButton" parent="CamButtons"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 531.0
+offset_right = 1234.0
+offset_bottom = 579.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_7u7tr")
+texture_pressed = SubResource("AnimatedTexture_4vqgf")
+
+[node name="TextureRect" type="TextureRect" parent="CamButtons/7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_mc5ew")
+
+[connection signal="cam_changed" from="CamButtons" to="." method="_on_cam_buttons_cam_changed"]
+[connection signal="cam_changed" from="CamButtons" to="View" method="_on_cam_buttons_cam_changed"]
+[connection signal="cam_changed" from="CamButtons" to="Overlay" method="_on_cam_buttons_cam_changed"]
+[connection signal="pressed" from="CamButtons/1" to="CamButtons" method="_on_cam1_pressed"]
+[connection signal="pressed" from="CamButtons/2" to="CamButtons" method="_on_cam2_pressed"]
+[connection signal="pressed" from="CamButtons/3" to="CamButtons" method="_on_cam3_pressed"]
+[connection signal="pressed" from="CamButtons/4" to="CamButtons" method="_on_cam4_pressed"]
+[connection signal="pressed" from="CamButtons/5" to="CamButtons" method="_on_cam5_pressed"]
+[connection signal="pressed" from="CamButtons/6" to="CamButtons" method="_on_cam6_pressed"]
+[connection signal="pressed" from="CamButtons/7" to="CamButtons" method="_on_cam7_pressed"]
