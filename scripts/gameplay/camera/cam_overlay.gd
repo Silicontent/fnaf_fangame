@@ -16,5 +16,5 @@ func _on_cam_buttons_cam_changed(_cam):
 
 
 # ANIMATRONIC MOVED ------------------------------------------------------
-func _on_fredbear_moved(_location):
+func _on_character_moved(_location):
 	anim_player.play("static_flash")

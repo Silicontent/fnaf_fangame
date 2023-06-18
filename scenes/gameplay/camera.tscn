@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ca3ixmg3sq0gj"]
+[gd_scene load_steps=51 format=3 uid="uid://ca3ixmg3sq0gj"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/camera/camera.gd" id="1_5gv5x"]
 [ext_resource type="Texture2D" uid="uid://by5rrdb5d4rlm" path="res://assets/camera/ui/cam_buttons/cam_button_normal.png" id="1_7u7tr"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://clapp8uk33yun" path="res://assets/ui/static/frame_7_delay-0.01s.png" id="24_vy7s3"]
 [ext_resource type="PackedScene" uid="uid://b6bgfs5udpjw6" path="res://scenes/gameplay/animatronics/fredbear.tscn" id="33_4tycx"]
 [ext_resource type="Script" path="res://scripts/gameplay/camera/animatronic_manager.gd" id="33_yt6sh"]
+[ext_resource type="PackedScene" uid="uid://mhshcv2hgc21" path="res://scenes/gameplay/animatronics/spring_bonnie.tscn" id="43_obbmt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yeqai"]
 animations = [{
@@ -427,6 +428,9 @@ script = ExtResource("33_yt6sh")
 [node name="Fredbear" parent="Animatronics" instance=ExtResource("33_4tycx")]
 position = Vector2(853, 588)
 
+[node name="SpringBonnie" parent="Animatronics" instance=ExtResource("43_obbmt")]
+position = Vector2(875, 592)
+
 [connection signal="cam_changed" from="CamButtons" to="." method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="View" method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="Overlay" method="_on_cam_buttons_cam_changed"]
@@ -438,5 +442,8 @@ position = Vector2(853, 588)
 [connection signal="pressed" from="CamButtons/6" to="CamButtons" method="_on_cam6_pressed"]
 [connection signal="pressed" from="CamButtons/7" to="CamButtons" method="_on_cam7_pressed"]
 [connection signal="moved" from="Animatronics/Fredbear" to="View" method="_on_fredbear_moved"]
-[connection signal="moved" from="Animatronics/Fredbear" to="Overlay" method="_on_fredbear_moved"]
+[connection signal="moved" from="Animatronics/Fredbear" to="Overlay" method="_on_character_moved"]
 [connection signal="moved" from="Animatronics/Fredbear" to="Animatronics" method="_on_fredbear_moved"]
+[connection signal="moved" from="Animatronics/SpringBonnie" to="View" method="_on_spring_bonnie_moved"]
+[connection signal="moved" from="Animatronics/SpringBonnie" to="Overlay" method="_on_character_moved"]
+[connection signal="moved" from="Animatronics/SpringBonnie" to="Animatronics" method="_on_spring_bonnie_moved"]

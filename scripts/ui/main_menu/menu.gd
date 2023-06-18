@@ -30,7 +30,7 @@ func _ready() -> void:
 	load_data()
 	continue_display.text = "(" + str(save_res.night) + ")"
 	
-	AudioMaster.start_sound("res://assets/audio/menus/menu_bgm.wav", 1, 0.0)
+	AudioMaster.start_sound("res://assets/audio/menus/menu_bgm.wav", 0.0)
 
 
 # SAVING AND LOADING DATA ------------------------------------------------

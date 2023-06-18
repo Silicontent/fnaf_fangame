@@ -109,7 +109,7 @@ autowrap_mode = 2
 [node name="Label2" type="Label" parent="WarningContainer/VBoxContainer"]
 layout_mode = 2
 text = "
-Click to continue..."
+Click anywhere to continue..."
 label_settings = SubResource("LabelSettings_x0f4n")
 horizontal_alignment = 1
 vertical_alignment = 2

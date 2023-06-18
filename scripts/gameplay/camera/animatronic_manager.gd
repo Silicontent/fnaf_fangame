@@ -1,6 +1,7 @@
 extends Control
 
 @onready var fredbear = $Fredbear
+@onready var sbonnie = $SpringBonnie
 
 var places = {
 	1: Vector2(864, 588),     # Stage
@@ -26,10 +27,7 @@ func _ready() -> void:
 # ANIMATRONIC MOVED ------------------------------------------------------
 func _on_fredbear_moved(location):
 	fredbear.position = places[location]
-<<<<<<< Updated upstream
-=======
 
 
 func _on_spring_bonnie_moved(location):
 	sbonnie.position = places[location]
->>>>>>> Stashed changes

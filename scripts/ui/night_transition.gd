@@ -5,7 +5,7 @@ extends Control
 
 
 func _ready() -> void:
-	AudioMaster.stop_sound(1)
+	AudioMaster.stop_sound()
 	
 	if Globals.custom_night:
 		night_lbl.text = "[center][b]Night 7[/b][/center]\n[center]12:00 AM[/center]"

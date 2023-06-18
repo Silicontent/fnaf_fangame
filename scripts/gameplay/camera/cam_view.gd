@@ -41,3 +41,12 @@ func _on_fredbear_moved(location):
 	if location <= 7:
 		fredbear_view.frame = (location - 1)
 	check_for_character()
+
+
+func _on_spring_bonnie_moved(location):
+	sb_loc = location
+	# doesn't change the character's camera sprite if the character's location is
+	# above 7 (all places above 7 are either in vents, at doors, or in the office)
+	if location <= 7:
+		sbonnie_view.frame = (location - 1)
+	check_for_character()
