@@ -26,6 +26,7 @@ var current_path: Array
 func _ready() -> void:
 	# without this, the owner "Animatronics" won't have a reference to this character
 	# ready before the animatronic emits the moved signal
+	# this may not be the problem at all, needs more investigation
 	await owner.ready
 	
 	randomize()
@@ -60,8 +61,8 @@ func progress_to_location() -> void:
 
 # runs whenever the movement timer ends, giving the character a movement opportunity
 func _on_move_timer_timeout():
-	# randum num between 0 and 20 (21 is not counted, read docs for more)
-	var rand = randi() % 21
+	# randum num between 1 and 20
+	var rand = randi() % 20 + 1
 	
 	# makes random number act like a percent chance to move
 	if ai >= rand:

@@ -26,3 +26,10 @@ func _ready() -> void:
 # ANIMATRONIC MOVED ------------------------------------------------------
 func _on_fredbear_moved(location):
 	fredbear.position = places[location]
+<<<<<<< Updated upstream
+=======
+
+
+func _on_spring_bonnie_moved(location):
+	sbonnie.position = places[location]
+>>>>>>> Stashed changes
