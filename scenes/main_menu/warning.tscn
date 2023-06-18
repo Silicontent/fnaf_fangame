@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5k72dl54incq"]
+[gd_scene load_steps=12 format=3 uid="uid://b5k72dl54incq"]
 
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="1_cstc0"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu/warning.gd" id="1_ocel8"]
@@ -17,6 +17,9 @@ font_size = 44
 font = ExtResource("4_mwmd3")
 font_size = 35
 
+[sub_resource type="LabelSettings" id="LabelSettings_4p330"]
+font = ExtResource("2_hdg7s")
+
 [sub_resource type="Animation" id="Animation_8st3r"]
 resource_name = "warning_fade_in"
 tracks/0/type = "value"
@@ -26,6 +29,18 @@ tracks/0/path = NodePath("WarningContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -42,6 +57,18 @@ tracks/0/path = NodePath("WarningContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -73,6 +100,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="WarningContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,6 +140,18 @@ text = "
 Click anywhere to continue..."
 label_settings = SubResource("LabelSettings_x0f4n")
 horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Credits" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 12.0
+offset_top = 642.0
+offset_right = 430.0
+offset_bottom = 708.0
+text = "FNAF by Scott Cawthon
+Assets from Silicontent and Scott Cawthon
+Title screen plush artwork from kaizerin on DeviantArt"
+label_settings = SubResource("LabelSettings_4p330")
 vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
