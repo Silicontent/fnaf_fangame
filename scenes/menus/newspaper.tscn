@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cuw62pk6yvfi1"]
 
-[ext_resource type="Script" path="res://scripts/ui/newspaper.gd" id="1_u4bmj"]
+[ext_resource type="Script" path="res://scripts/menus/newspaper.gd" id="1_eye67"]
 [ext_resource type="Texture2D" uid="uid://cdbifpy88v42n" path="res://assets/ui/newspaper.png" id="1_va7mv"]
 [ext_resource type="FontFile" uid="uid://beiky4b2vaee0" path="res://assets/ui/font_tnr/italic.ttf" id="3_jhn7j"]
 
@@ -36,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u4bmj")
+script = ExtResource("1_eye67")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

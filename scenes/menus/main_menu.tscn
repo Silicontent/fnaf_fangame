@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://ddhhgaccnsf1b"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu/menu.gd" id="1_42bun"]
+[ext_resource type="Script" path="res://scripts/menus/menu.gd" id="1_3gblx"]
 [ext_resource type="Texture2D" uid="uid://3hqqhjohrgp2" path="res://assets/ui/menu_plush.png" id="1_eibmr"]
 [ext_resource type="Texture2D" uid="uid://d3q4jq81dpn0j" path="res://assets/ui/static/frame_0_delay-0.01s.png" id="2_33o1h"]
 [ext_resource type="AudioStream" uid="uid://ba1wpawekxftb" path="res://assets/audio/menus/blip.wav" id="2_bsqeu"]
@@ -143,7 +143,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_42bun")
+script = ExtResource("1_3gblx")
 
 [node name="Audio" type="Node" parent="."]
 
@@ -312,7 +312,6 @@ mouse_filter = 0
 texture = ExtResource("20_ot7op")
 
 [node name="Fade" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

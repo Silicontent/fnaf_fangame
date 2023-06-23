@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbniyic1m585g"]
 
-[ext_resource type="Script" path="res://scripts/ui/night_transition.gd" id="1_au4mh"]
+[ext_resource type="Script" path="res://scripts/menus/night_transition.gd" id="1_0q0uv"]
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="1_pfa7k"]
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="2_xvfyo"]
 [ext_resource type="FontFile" uid="uid://beiky4b2vaee0" path="res://assets/ui/font_tnr/italic.ttf" id="3_hm75i"]
@@ -60,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_au4mh")
+script = ExtResource("1_0q0uv")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

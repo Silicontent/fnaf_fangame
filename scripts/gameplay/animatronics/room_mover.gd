@@ -24,14 +24,15 @@ var current_path: Array
 
 
 func _ready() -> void:
-	# without this, the owner "Animatronics" won't have a reference to this character
-	# ready before the animatronic emits the moved signal
-	# this may not be the problem at all, needs more investigation
-	await owner.ready
 	
 	randomize()
 	move_timer.wait_time = wait_duration
 	reset_to_beginning()
+	
+	# without this, the owner "Animatronics" won't have a reference to this character
+	# ready before the animatronic emits the moved signal
+	# this may not be the problem at all, needs more investigation
+	await owner.ready
 	emit_signal("moved", current_location)
 
 
@@ -55,7 +56,7 @@ func reset_to_beginning() -> void:
 
 func progress_to_location() -> void:
 	current_location = current_path[current_progress]
-	print("move success, location: " + str(current_location))
+	print(animatronic + " move success, location: " + str(current_location))
 	emit_signal("moved", current_location)
 
 
@@ -70,9 +71,9 @@ func _on_move_timer_timeout():
 		progress_to_location()
 		if current_location == 12:
 			move_timer.stop()
-			print("in office, ready to attack")
+			print(animatronic + " in office, ready to attack")
 		else:
 			move_timer.start()
 	else:
-		print("move failed, location: " + str(current_location))
+		print(animatronic + " move failed, location: " + str(current_location))
 		move_timer.start()

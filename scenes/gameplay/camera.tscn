@@ -1,15 +1,19 @@
-[gd_scene load_steps=51 format=3 uid="uid://ca3ixmg3sq0gj"]
+[gd_scene load_steps=57 format=3 uid="uid://ca3ixmg3sq0gj"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/camera/camera.gd" id="1_5gv5x"]
 [ext_resource type="Texture2D" uid="uid://by5rrdb5d4rlm" path="res://assets/camera/ui/cam_buttons/cam_button_normal.png" id="1_7u7tr"]
 [ext_resource type="Texture2D" uid="uid://cdm2tku5c5iq5" path="res://assets/camera/ui/border.png" id="1_rfqai"]
 [ext_resource type="Texture2D" uid="uid://cv2qtc76swoqc" path="res://assets/camera/ui/rec_1.png" id="2_5vhad"]
+[ext_resource type="Script" path="res://scripts/gameplay/camera/cam_audio.gd" id="2_py1o8"]
 [ext_resource type="Texture2D" uid="uid://bar7s87gynx8b" path="res://assets/camera/ui/cam_buttons/cam_button_selected_1.png" id="2_uytu7"]
 [ext_resource type="Script" path="res://scripts/gameplay/camera/cam_view.gd" id="2_veudk"]
 [ext_resource type="Texture2D" uid="uid://csyj8h3uw6ffa" path="res://assets/camera/ui/rec_2.png" id="3_4ntxk"]
 [ext_resource type="Texture2D" uid="uid://dm1x61nee1ql5" path="res://assets/camera/ui/cam_buttons/cam_button_selected_2.png" id="3_l03t4"]
+[ext_resource type="AudioStream" uid="uid://21pruk1qalj0" path="res://assets/audio/gameplay/cameras/cam_up.wav" id="3_vmeek"]
+[ext_resource type="AudioStream" uid="uid://bcr0k4cnr4nyh" path="res://assets/audio/gameplay/cameras/cam_down.wav" id="4_qj0k7"]
 [ext_resource type="Texture2D" uid="uid://bc3726mxuxav7" path="res://assets/camera/ui/map_1.png" id="4_ykoyy"]
 [ext_resource type="Texture2D" uid="uid://c8qvhu4qn5qka" path="res://assets/camera/ui/map_2.png" id="5_20esc"]
+[ext_resource type="AudioStream" uid="uid://brxrv1fnqvxde" path="res://assets/audio/gameplay/cameras/cam_switch.wav" id="5_i24ka"]
 [ext_resource type="SpriteFrames" uid="uid://cpvatof4m6qk4" path="res://assets/camera/backgrounds/cam_backgrounds.tres" id="6_j0a4x"]
 [ext_resource type="Script" path="res://scripts/gameplay/camera/cam_overlay.gd" id="6_v0b5e"]
 [ext_resource type="Texture2D" uid="uid://b7pne5s8akobd" path="res://assets/camera/ui/cam_switch_glitch/switch_cam_1.png" id="7_qd13y"]
@@ -43,6 +47,52 @@
 [ext_resource type="PackedScene" uid="uid://b6bgfs5udpjw6" path="res://scenes/gameplay/animatronics/fredbear.tscn" id="33_4tycx"]
 [ext_resource type="Script" path="res://scripts/gameplay/camera/animatronic_manager.gd" id="33_yt6sh"]
 [ext_resource type="PackedScene" uid="uid://mhshcv2hgc21" path="res://scenes/gameplay/animatronics/spring_bonnie.tscn" id="43_obbmt"]
+
+[sub_resource type="Animation" id="Animation_q8ho1"]
+resource_name = "pan"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainScene:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 6, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-320, 0), Vector2(-320, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fredbear:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 6, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-320, 0), Vector2(-320, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpringBonnie:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4, 6, 10, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-320, 0), Vector2(-320, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14oqu"]
+_data = {
+"pan": SubResource("Animation_q8ho1")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yeqai"]
 animations = [{
@@ -163,6 +213,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5gv5x")
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("2_py1o8")
+
+[node name="CamUp" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_vmeek")
+
+[node name="CamDown" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_qj0k7")
+
+[node name="CamSwitch" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_i24ka")
+
 [node name="View" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -188,6 +250,11 @@ visible = false
 sprite_frames = ExtResource("9_kaf46")
 animation = &"positions"
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="View"]
+libraries = {
+"": SubResource("AnimationLibrary_14oqu")
+}
 
 [node name="Overlay" type="Control" parent="."]
 layout_mode = 1
@@ -431,7 +498,8 @@ position = Vector2(853, 588)
 [node name="SpringBonnie" parent="Animatronics" instance=ExtResource("43_obbmt")]
 position = Vector2(875, 592)
 
-[connection signal="cam_changed" from="CamButtons" to="." method="_on_cam_buttons_cam_changed"]
+[connection signal="camera_toggle" from="." to="Audio" method="_on_camera_toggle"]
+[connection signal="cam_changed" from="CamButtons" to="Audio" method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="View" method="_on_cam_buttons_cam_changed"]
 [connection signal="cam_changed" from="CamButtons" to="Overlay" method="_on_cam_buttons_cam_changed"]
 [connection signal="pressed" from="CamButtons/1" to="CamButtons" method="_on_cam1_pressed"]

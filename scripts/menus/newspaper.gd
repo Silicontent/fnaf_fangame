@@ -11,4 +11,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_fade_finished(_anim_name):
-	get_tree().change_scene_to_file("res://scenes/main_menu/night_transition.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/night_transition.tscn")

@@ -84,7 +84,7 @@ func begin_night(intro: bool) -> void:
 	if intro:
 		anim_player.play("paper_fade_in")
 	else:
-		get_tree().change_scene_to_file("res://scenes/main_menu/night_transition.tscn")
+		get_tree().change_scene_to_file("res://scenes/menus/night_transition.tscn")
 	
 
 
@@ -114,4 +114,4 @@ func _on_option_button_entered():
 # NEWSPAPER ANIMATION ----------------------------------------------------
 func _on_paper_anim_finished(anim_name):
 	if anim_name == "paper_fade_in":
-		get_tree().change_scene_to_file("res://scenes/main_menu/newspaper.tscn")
+		get_tree().change_scene_to_file("res://scenes/menus/newspaper.tscn")

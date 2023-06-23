@@ -1,24 +1,24 @@
 extends Node2D
 
+signal hour_changed(hour: int)
+
 @onready var hud = $HUD
 
 @onready var cameras = $HUD/Camera
 @onready var monitor_toggle = $HUD/MonitorToggle
-@onready var monitor_anim = $MonitorAnimation
+@onready var monitor_anim = $HUD/MonitorAnimation
 
 @onready var night_display = $HUD/Times/Night
 @onready var hour_display = $HUD/Times/Hour
 @onready var hour_timer = $Mechanics/HourTimer
 
-var cam_state = false
-var can_flip_cams = true
 var hour = 0
 
 
 func _ready() -> void:
 	cameras.visible = false
-	cam_state = false
-	set_hour(hour)
+	cameras.reset_state()
+	set_hour()
 	monitor_anim.animation = "flip_up"
 	monitor_anim.frame = 0
 	
@@ -29,17 +29,30 @@ func _ready() -> void:
 		night_display.text = "Night " + str(Globals.current_night)
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_up"):
+		hour += 1
+		set_hour()
+	if Input.is_action_just_pressed("ui_down"):
+		hour -= 1
+		set_hour()
+	if Input.is_action_just_pressed("ui_accept"):
+		beat_night()
+
+
 # TIME MECHANICS ---------------------------------------------------------
-func set_hour(time: int) -> void:
-	if time == 0:
+func set_hour() -> void:
+	if hour == 0:
 		hour_display.text = "12 AM"
 	else:
 		hour_display.text = str(hour) + " AM"
+	
+	emit_signal("hour_changed", hour)
 
 
 func _on_hour_timer_timeout():
 	hour += 1
-	set_hour(hour)
+	set_hour()
 	
 	if hour >= 6:
 		beat_night()
@@ -59,27 +72,25 @@ func beat_night():
 	if !Globals.custom_night and Globals.current_night != 6:
 		Globals.current_night += 1
 	
-	get_tree().change_scene_to_file("res://scenes/gameplay/night_win.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/night_win.tscn")
 
 
 func game_over():
-	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 
 # MONITOR MECHANICS -------------------------------------------------------
 func toggle_cameras():
 	# if camera IS UP CURRENTLY
-	if cam_state:
+	if cameras.cam_state:
 		monitor_toggle.disabled = true
-		cam_state = false
-		cameras.visible = false
 		monitor_anim.visible = true
+		cameras.camera_toggled(false)
 		monitor_anim.play("flip_down")
 	
 	# if camera IS DOWN CURRENTLY
-	elif !cam_state:
+	elif !cameras.cam_state:
 		monitor_toggle.disabled = true
-		cam_state = true
 		monitor_anim.visible = true
 		monitor_anim.play("flip_up")
 
@@ -90,5 +101,5 @@ func _on_monitor_toggle_pressed():
 
 func _on_monitor_animation_finished():
 	if monitor_anim.animation == "flip_up":
-		cameras.visible = true
+		cameras.camera_toggled(true)
 	monitor_toggle.disabled = false

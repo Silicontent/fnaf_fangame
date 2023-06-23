@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://xgxj05m37u0t"]
 
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="1_1htf3"]
-[ext_resource type="Script" path="res://scripts/ui/night_win.gd" id="1_aansi"]
+[ext_resource type="Script" path="res://scripts/menus/night_win.gd" id="1_fmtmh"]
 [ext_resource type="AudioStream" uid="uid://cjfxcl6luydo0" path="res://assets/audio/menus/night_chime.wav" id="3_54kkg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x6hgr"]
@@ -98,7 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_aansi")
+script = ExtResource("1_fmtmh")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

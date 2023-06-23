@@ -3,6 +3,28 @@ extends Control
 @onready var fredbear = $Fredbear
 @onready var sbonnie = $SpringBonnie
 
+var fredbear_ais = {
+	1: [0, 1, 1],
+	2: [1, 2, 2],
+	3: [2, 3, 4],
+	4: [4, 5, 6],
+	5: [5, 6, 8],
+	6: [0, 0, 0],
+	7: [0, 0, 0]
+}
+var sbonnie_ais = {
+	1: [0, 0, 1],
+	2: [0, 1, 1],
+	3: [1, 2, 2],
+	4: [2, 2, 3],
+	5: [3, 4, 5],
+	6: [0, 0, 0],
+	7: [0, 0, 0]
+}
+
+var fb_list = []
+var sb_list = []
+
 var places = {
 	1: Vector2(864, 588),     # Stage
 	2: Vector2(916, 488),     # Dining Room
@@ -22,6 +44,25 @@ var places = {
 func _ready() -> void:
 	for chara in get_children():
 		chara.toggle_animatronic(true)
+	
+	if !Globals.custom_night:
+		fb_list = fredbear_ais[Globals.current_night]
+		sb_list = sbonnie_ais[Globals.current_night]
+
+
+func set_ai(time: int) -> void:
+	if time == 0:
+		fredbear.ai = fb_list[0]
+		sbonnie.ai = sb_list[0]
+	elif time == 2:
+		fredbear.ai = fb_list[1]
+		sbonnie.ai = sb_list[1]
+	elif time == 4:
+		fredbear.ai = fb_list[2]
+		sbonnie.ai = sb_list[2]
+	
+	fredbear.get_node("CanvasLayer/Label").text = str(fredbear.ai)
+	sbonnie.get_node("CanvasLayer/Label").text = str(sbonnie.ai)
 
 
 # ANIMATRONIC MOVED ------------------------------------------------------

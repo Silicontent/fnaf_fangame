@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://b5k72dl54incq"]
 
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="1_cstc0"]
-[ext_resource type="Script" path="res://scripts/ui/main_menu/warning.gd" id="1_ocel8"]
+[ext_resource type="Script" path="res://scripts/menus/warning.gd" id="1_wh3ys"]
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="2_hdg7s"]
 [ext_resource type="FontFile" uid="uid://beiky4b2vaee0" path="res://assets/ui/font_tnr/italic.ttf" id="4_mwmd3"]
 
@@ -88,7 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ocel8")
+script = ExtResource("1_wh3ys")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -144,6 +144,7 @@ vertical_alignment = 2
 
 [node name="Credits" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 12.0
 offset_top = 642.0
 offset_right = 430.0

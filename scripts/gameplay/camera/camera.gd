@@ -1,17 +1,20 @@
 extends Control
 
+signal camera_toggle(toggle: bool)
 
-func _on_cam_buttons_cam_changed(_cam):
-	'''
-	# TODO: checks for if a character is there
-	Try making another Control child that holds the actual animatronics
-	and their positions, then emit a signal from there to here when movement
-	occurs. When this happens, tell the View node to change to look of the
-	cameras.
-	
-	This keeps logic about the look of the cams, the position of the characters,
-	and the camera buttons in separate scripts and (theoretically/hopefully)
-	improves readability.
-	'''
-	
-	pass
+@onready var animatronic_manager = $Animatronics
+var cam_state = false
+
+
+func reset_state() -> void:
+	cam_state = false
+
+
+func camera_toggled(active: bool) -> void:
+	cam_state = active
+	self.visible = active
+	emit_signal("camera_toggle", active)
+
+
+func _on_game_hour_changed(hour):
+	animatronic_manager.set_ai(hour)

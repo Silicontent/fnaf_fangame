@@ -3,6 +3,7 @@ extends Control
 @onready var backgrounds = $MainScene
 @onready var fredbear_view = $Fredbear
 @onready var sbonnie_view = $SpringBonnie
+@onready var anim_player = $AnimationPlayer
 
 var fb_loc = 0
 var sb_loc = 0
@@ -12,6 +13,7 @@ var camera = 0
 func _ready() -> void:
 	fredbear_view.visible = false
 	sbonnie_view.visible = false
+	anim_player.play("pan")
 
 
 func _on_cam_buttons_cam_changed(cam):

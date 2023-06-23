@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://3ya1pin7d4dx"]
+
+[ext_resource type="Texture2D" uid="uid://ca1m10g5wjx1b" path="res://assets/office/office.png" id="1_hb4dx"]
+[ext_resource type="Texture2D" uid="uid://bpmwd5g31dm7d" path="res://assets/office/office_vent.png" id="2_eit57"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hb4dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eit57")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]

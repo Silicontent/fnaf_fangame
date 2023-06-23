@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://15q0uplf2vkv"]
+[gd_scene load_steps=28 format=3 uid="uid://15q0uplf2vkv"]
 
-[ext_resource type="Script" path="res://scripts/gameplay/game_manager.gd" id="1_t5o5h"]
+[ext_resource type="Script" path="res://scripts/gameplay/managers/game_manager.gd" id="1_00kh5"]
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="2_0nbq3"]
 [ext_resource type="PackedScene" uid="uid://ca3ixmg3sq0gj" path="res://scenes/gameplay/camera.tscn" id="2_c651e"]
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="3_nbd3e"]
 [ext_resource type="Texture2D" uid="uid://i8kw4xq1scqj" path="res://assets/camera/ui/cam_flip.png" id="4_5ke45"]
 [ext_resource type="Texture2D" uid="uid://e1yppahckogu" path="res://assets/camera/char_on_cams/placeholder.png" id="4_eudnt"]
+[ext_resource type="Script" path="res://scripts/gameplay/office_cam.gd" id="4_ukucs"]
+[ext_resource type="Script" path="res://scripts/gameplay/office_hud.gd" id="5_imdj0"]
 [ext_resource type="Texture2D" uid="uid://dbqasbbeecc0n" path="res://assets/camera/monitor/monitor_01.png" id="5_ywoch"]
 [ext_resource type="Texture2D" uid="uid://dcdo12ammtf41" path="res://assets/camera/monitor/monitor_02.png" id="6_c4ch0"]
 [ext_resource type="Texture2D" uid="uid://cl0nrkcwdhdcl" path="res://assets/camera/monitor/monitor_03.png" id="7_7jj5a"]
@@ -15,8 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://onq21c4q5h3j" path="res://assets/camera/monitor/monitor_07.png" id="11_nvj2p"]
 [ext_resource type="Texture2D" uid="uid://ces4jpxdse02n" path="res://assets/camera/monitor/monitor_08.png" id="12_lx5cs"]
 [ext_resource type="Texture2D" uid="uid://cv08kyha7iy4e" path="res://assets/camera/monitor/monitor_09.png" id="13_shxkn"]
+[ext_resource type="Script" path="res://scripts/gameplay/office.gd" id="14_1aap7"]
+[ext_resource type="SpriteFrames" uid="uid://3ya1pin7d4dx" path="res://assets/office/office.tres" id="14_dlrkc"]
 [ext_resource type="Texture2D" uid="uid://tiblo2gcipte" path="res://assets/camera/monitor/monitor_10.png" id="14_e8qmm"]
 [ext_resource type="Texture2D" uid="uid://cn6kg77acy0hw" path="res://assets/camera/monitor/monitor_11.png" id="15_5r3kn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyrrv"]
+font = ExtResource("2_0nbq3")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeqtw"]
+font = ExtResource("3_nbd3e")
+font_size = 26
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cgi6b"]
 animations = [{
@@ -103,30 +115,73 @@ animations = [{
 "speed": 40.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_cyrrv"]
-font = ExtResource("2_0nbq3")
-font_size = 45
+[sub_resource type="Animation" id="Animation_7n4r2"]
+resource_name = "button_middle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(23, 643), Vector2(389.5, 643)]
+}
 
-[sub_resource type="LabelSettings" id="LabelSettings_jeqtw"]
-font = ExtResource("3_nbd3e")
-font_size = 26
+[sub_resource type="Animation" id="Animation_v57ed"]
+resource_name = "button_left"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(23, 643)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxidm"]
+_data = {
+"button_left": SubResource("Animation_v57ed"),
+"button_middle": SubResource("Animation_7n4r2")
+}
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_t5o5h")
+script = ExtResource("1_00kh5")
 
-[node name="MonitorAnimation" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_cgi6b")
-animation = &"flip_down"
+[node name="Room" type="Node2D" parent="."]
+script = ExtResource("14_1aap7")
+
+[node name="Environment" type="Node2D" parent="Room"]
+
+[node name="Office" type="AnimatedSprite2D" parent="Room/Environment"]
+sprite_frames = ExtResource("14_dlrkc")
 centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1600
+limit_bottom = 0
+limit_smoothed = true
+editor_draw_limits = true
+script = ExtResource("4_ukucs")
 
 [node name="Mechanics" type="Node" parent="."]
 
 [node name="HourTimer" type="Timer" parent="Mechanics"]
-wait_time = 70.0
+wait_time = 80.0
 one_shot = true
 autostart = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_imdj0")
 
 [node name="Camera" parent="HUD" instance=ExtResource("2_c651e")]
 
@@ -166,14 +221,30 @@ label_settings = SubResource("LabelSettings_jeqtw")
 horizontal_alignment = 2
 
 [node name="MonitorToggle" type="TextureButton" parent="HUD"]
-offset_left = 23.0
+offset_left = 389.5
 offset_top = 643.0
-offset_right = 524.0
+offset_right = 890.5
 offset_bottom = 697.0
 focus_mode = 0
 action_mode = 0
 texture_normal = ExtResource("4_5ke45")
 
-[connection signal="animation_finished" from="MonitorAnimation" to="." method="_on_monitor_animation_finished"]
+[node name="MonitorAnimation" type="AnimatedSprite2D" parent="HUD"]
+sprite_frames = SubResource("SpriteFrames_cgi6b")
+animation = &"flip_up"
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
+root_node = NodePath("../MonitorToggle")
+libraries = {
+"": SubResource("AnimationLibrary_bxidm")
+}
+
+[connection signal="hour_changed" from="." to="HUD/Camera" method="_on_game_hour_changed"]
 [connection signal="timeout" from="Mechanics/HourTimer" to="." method="_on_hour_timer_timeout"]
+[connection signal="camera_toggle" from="HUD/Camera" to="Camera2D" method="_on_security_camera_toggle"]
+[connection signal="camera_toggle" from="HUD/Camera" to="HUD" method="_on_security_camera_toggle"]
 [connection signal="pressed" from="HUD/MonitorToggle" to="." method="_on_monitor_toggle_pressed"]
+[connection signal="animation_changed" from="HUD/MonitorAnimation" to="HUD" method="_on_monitor_animation_changed"]
+[connection signal="animation_finished" from="HUD/MonitorAnimation" to="." method="_on_monitor_animation_finished"]
+[connection signal="animation_finished" from="HUD/MonitorAnimation" to="HUD" method="_on_monitor_animation_finished"]
