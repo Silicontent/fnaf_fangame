@@ -6,3 +6,4 @@ res://scenes/gameplay/animatronics/spring_bonnie.tscn
 res://scripts/gameplay/office_cam.gd
 res://scripts/gameplay/office_hud.gd
 res://scripts/gameplay/managers/game_manager.gd
+res://scripts/gameplay/camera/animatronic_manager.gd

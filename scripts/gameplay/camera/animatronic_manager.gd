@@ -48,6 +48,8 @@ func _ready() -> void:
 	if !Globals.custom_night:
 		fb_list = fredbear_ais[Globals.current_night]
 		sb_list = sbonnie_ais[Globals.current_night]
+	
+	set_ai(0)
 
 
 func set_ai(time: int) -> void:

@@ -231,7 +231,7 @@ texture_normal = ExtResource("4_5ke45")
 
 [node name="MonitorAnimation" type="AnimatedSprite2D" parent="HUD"]
 sprite_frames = SubResource("SpriteFrames_cgi6b")
-animation = &"flip_up"
+animation = &"flip_down"
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD"]
@@ -240,6 +240,7 @@ libraries = {
 "": SubResource("AnimationLibrary_bxidm")
 }
 
+[connection signal="hour_changed" from="." to="HUD" method="_on_hour_changed"]
 [connection signal="hour_changed" from="." to="HUD/Camera" method="_on_game_hour_changed"]
 [connection signal="timeout" from="Mechanics/HourTimer" to="." method="_on_hour_timer_timeout"]
 [connection signal="camera_toggle" from="HUD/Camera" to="Camera2D" method="_on_security_camera_toggle"]
