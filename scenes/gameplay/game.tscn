@@ -115,21 +115,6 @@ animations = [{
 "speed": 40.0
 }]
 
-[sub_resource type="Animation" id="Animation_7n4r2"]
-resource_name = "button_middle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(23, 643), Vector2(389.5, 643)]
-}
-
 [sub_resource type="Animation" id="Animation_v57ed"]
 resource_name = "button_left"
 step = 0.05
@@ -144,6 +129,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(23, 643)]
+}
+
+[sub_resource type="Animation" id="Animation_7n4r2"]
+resource_name = "button_middle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(23, 643), Vector2(389.5, 643)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bxidm"]
@@ -184,6 +184,7 @@ autostart = true
 script = ExtResource("5_imdj0")
 
 [node name="Camera" parent="HUD" instance=ExtResource("2_c651e")]
+visible = false
 
 [node name="Times" type="Control" parent="HUD"]
 layout_mode = 3
@@ -230,6 +231,7 @@ action_mode = 0
 texture_normal = ExtResource("4_5ke45")
 
 [node name="MonitorAnimation" type="AnimatedSprite2D" parent="HUD"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_cgi6b")
 animation = &"flip_down"
 centered = false

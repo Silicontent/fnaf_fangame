@@ -1,9 +1,5 @@
-res://scenes/gameplay/game.tscn
-res://scenes/menus/main_menu.tscn
 res://scenes/gameplay/camera.tscn
+res://scenes/menus/main_menu.tscn
+res://scenes/gameplay/game.tscn
 res://scenes/gameplay/animatronics/fredbear.tscn
 res://scenes/gameplay/animatronics/spring_bonnie.tscn
-res://scripts/gameplay/office_cam.gd
-res://scripts/gameplay/office_hud.gd
-res://scripts/gameplay/managers/game_manager.gd
-res://scripts/gameplay/camera/animatronic_manager.gd
