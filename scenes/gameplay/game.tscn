@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://15q0uplf2vkv"]
+[gd_scene load_steps=37 format=3 uid="uid://15q0uplf2vkv"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/managers/game_manager.gd" id="1_00kh5"]
 [ext_resource type="FontFile" uid="uid://b0hhby61o43h0" path="res://assets/ui/font_tnr/bold.ttf" id="2_0nbq3"]
@@ -6,13 +6,20 @@
 [ext_resource type="FontFile" uid="uid://du27s588u2ldk" path="res://assets/ui/font_tnr/regular.ttf" id="3_nbd3e"]
 [ext_resource type="Texture2D" uid="uid://i8kw4xq1scqj" path="res://assets/camera/ui/cam_flip.png" id="4_5ke45"]
 [ext_resource type="Texture2D" uid="uid://e1yppahckogu" path="res://assets/camera/char_on_cams/placeholder.png" id="4_eudnt"]
+[ext_resource type="Script" path="res://scripts/gameplay/managers/door_manager.gd" id="4_l8jhl"]
 [ext_resource type="Script" path="res://scripts/gameplay/office_cam.gd" id="4_ukucs"]
 [ext_resource type="Script" path="res://scripts/gameplay/office_hud.gd" id="5_imdj0"]
+[ext_resource type="Texture2D" uid="uid://b7ii8sa5tdq7a" path="res://assets/office/doors/left/left_2.png" id="5_ugi7b"]
 [ext_resource type="Texture2D" uid="uid://dbqasbbeecc0n" path="res://assets/camera/monitor/monitor_01.png" id="5_ywoch"]
+[ext_resource type="Texture2D" uid="uid://dmoixxe2upbk" path="res://assets/office/doors/left/left_3.png" id="6_bjxbt"]
 [ext_resource type="Texture2D" uid="uid://dcdo12ammtf41" path="res://assets/camera/monitor/monitor_02.png" id="6_c4ch0"]
 [ext_resource type="Texture2D" uid="uid://cl0nrkcwdhdcl" path="res://assets/camera/monitor/monitor_03.png" id="7_7jj5a"]
+[ext_resource type="Texture2D" uid="uid://trtl0o6fuai2" path="res://assets/office/doors/right/right_4.png" id="7_haqrq"]
+[ext_resource type="Texture2D" uid="uid://diu84078rweqw" path="res://assets/office/doors/left/left_4.png" id="7_ytwba"]
 [ext_resource type="Texture2D" uid="uid://dyfvgkcs2hkv1" path="res://assets/camera/monitor/monitor_04.png" id="8_40ssq"]
+[ext_resource type="Texture2D" uid="uid://bp2m16iwxm6jo" path="res://assets/office/doors/door_btn_off.png" id="9_oueu5"]
 [ext_resource type="Texture2D" uid="uid://bqejvwi0dhob2" path="res://assets/camera/monitor/monitor_05.png" id="9_wliwx"]
+[ext_resource type="Texture2D" uid="uid://cd4tt07pk3ake" path="res://assets/office/doors/door_btn_on.png" id="10_6q74p"]
 [ext_resource type="Texture2D" uid="uid://cjph7gaw5k67r" path="res://assets/camera/monitor/monitor_06.png" id="10_iyo16"]
 [ext_resource type="Texture2D" uid="uid://onq21c4q5h3j" path="res://assets/camera/monitor/monitor_07.png" id="11_nvj2p"]
 [ext_resource type="Texture2D" uid="uid://ces4jpxdse02n" path="res://assets/camera/monitor/monitor_08.png" id="12_lx5cs"]
@@ -21,6 +28,80 @@
 [ext_resource type="SpriteFrames" uid="uid://3ya1pin7d4dx" path="res://assets/office/office.tres" id="14_dlrkc"]
 [ext_resource type="Texture2D" uid="uid://tiblo2gcipte" path="res://assets/camera/monitor/monitor_10.png" id="14_e8qmm"]
 [ext_resource type="Texture2D" uid="uid://cn6kg77acy0hw" path="res://assets/camera/monitor/monitor_11.png" id="15_5r3kn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fk33w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugi7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bjxbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ytwba")
+}],
+"loop": false,
+"name": &"close",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ytwba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bjxbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugi7b")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"open",
+"speed": 13.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0sp4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugi7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bjxbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_haqrq")
+}],
+"loop": false,
+"name": &"close",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_haqrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bjxbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugi7b")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"open",
+"speed": 13.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cyrrv"]
 font = ExtResource("2_0nbq3")
@@ -164,6 +245,37 @@ script = ExtResource("14_1aap7")
 sprite_frames = ExtResource("14_dlrkc")
 centered = false
 
+[node name="Doors" type="Node2D" parent="Room"]
+script = ExtResource("4_l8jhl")
+
+[node name="LeftDoor" type="AnimatedSprite2D" parent="Room/Doors"]
+position = Vector2(468, 382)
+sprite_frames = SubResource("SpriteFrames_fk33w")
+animation = &"open"
+
+[node name="RightDoor" type="AnimatedSprite2D" parent="Room/Doors"]
+position = Vector2(1120, 382)
+sprite_frames = SubResource("SpriteFrames_0sp4u")
+animation = &"open"
+
+[node name="LeftBtn" type="TextureButton" parent="Room/Doors"]
+offset_left = 305.0
+offset_top = 335.0
+offset_right = 353.0
+offset_bottom = 383.0
+toggle_mode = true
+texture_normal = ExtResource("9_oueu5")
+texture_pressed = ExtResource("10_6q74p")
+
+[node name="RightBtn" type="TextureButton" parent="Room/Doors"]
+offset_left = 1229.0
+offset_top = 334.0
+offset_right = 1277.0
+offset_bottom = 382.0
+toggle_mode = true
+texture_normal = ExtResource("9_oueu5")
+texture_pressed = ExtResource("10_6q74p")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
@@ -244,6 +356,8 @@ libraries = {
 
 [connection signal="hour_changed" from="." to="HUD" method="_on_hour_changed"]
 [connection signal="hour_changed" from="." to="HUD/Camera" method="_on_game_hour_changed"]
+[connection signal="toggled" from="Room/Doors/LeftBtn" to="Room/Doors" method="_on_left_btn_toggled"]
+[connection signal="toggled" from="Room/Doors/RightBtn" to="Room/Doors" method="_on_right_btn_toggled"]
 [connection signal="timeout" from="Mechanics/HourTimer" to="." method="_on_hour_timer_timeout"]
 [connection signal="camera_toggle" from="HUD/Camera" to="Camera2D" method="_on_security_camera_toggle"]
 [connection signal="camera_toggle" from="HUD/Camera" to="HUD" method="_on_security_camera_toggle"]

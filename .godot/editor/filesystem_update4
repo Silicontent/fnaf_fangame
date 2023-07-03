@@ -5,3 +5,5 @@ res://scenes/gameplay/animatronics/spring_bonnie.tscn
 res://scenes/gameplay/game.tscn
 res://scenes/intro.tscn
 res://scripts/intro.gd
+res://scripts/gameplay/managers/animatronic_manager.gd
+res://scripts/gameplay/managers/door_manager.gd

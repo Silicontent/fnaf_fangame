@@ -45,8 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://3ccpgjguja11" path="res://assets/ui/static/frame_6_delay-0.01s.png" id="23_jfv46"]
 [ext_resource type="Texture2D" uid="uid://clapp8uk33yun" path="res://assets/ui/static/frame_7_delay-0.01s.png" id="24_vy7s3"]
 [ext_resource type="PackedScene" uid="uid://b6bgfs5udpjw6" path="res://scenes/gameplay/animatronics/fredbear.tscn" id="33_4tycx"]
-[ext_resource type="Script" path="res://scripts/gameplay/camera/animatronic_manager.gd" id="33_yt6sh"]
 [ext_resource type="PackedScene" uid="uid://mhshcv2hgc21" path="res://scenes/gameplay/animatronics/spring_bonnie.tscn" id="43_obbmt"]
+[ext_resource type="Script" path="res://scripts/gameplay/managers/animatronic_manager.gd" id="45_3fcdj"]
 
 [sub_resource type="Animation" id="Animation_q8ho1"]
 resource_name = "pan"
@@ -490,7 +490,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("33_yt6sh")
+script = ExtResource("45_3fcdj")
 
 [node name="Fredbear" parent="Animatronics" instance=ExtResource("33_4tycx")]
 position = Vector2(853, 588)
