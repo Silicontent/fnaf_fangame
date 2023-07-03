@@ -1,5 +1,7 @@
-res://scenes/gameplay/camera.tscn
 res://scenes/menus/main_menu.tscn
-res://scenes/gameplay/game.tscn
+res://scenes/gameplay/camera.tscn
 res://scenes/gameplay/animatronics/fredbear.tscn
 res://scenes/gameplay/animatronics/spring_bonnie.tscn
+res://scenes/gameplay/game.tscn
+res://scenes/intro.tscn
+res://scripts/intro.gd
